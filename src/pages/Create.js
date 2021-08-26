@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Typography, Button, Container, TextField } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  Container,
+  TextField,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  FormLabel,
+  FormControl,
+} from "@material-ui/core";
 import { KeyboardArrowRight } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 
@@ -15,16 +25,17 @@ function Create() {
   const classes = useStyles();
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
-  const [titleError, settitleError] = useState(false);
-  const [detailError, setdetailError] = useState(false);
+  const [titleError, setTitleError] = useState(false);
+  const [detailError, setDetailError] = useState(false);
+  const [category, setCategory] = useState("todos");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    settitleError(false);
-    setdetailError(false);
+    setTitleError(false);
+    setDetailError(false);
 
-    title === "" ? settitleError(true) : settitleError(false);
-    detail === "" ? setdetailError(true) : setdetailError(false);
+    title === "" ? setTitleError(true) : setTitleError(false);
+    detail === "" ? setDetailError(true) : setDetailError(false);
 
     if (title && detail) {
       console.log(title, detail);
@@ -47,7 +58,9 @@ function Create() {
           fullWidth
           required
           error={titleError}
+          helperText={titleError ? "Please fill this field" : ""}
         />
+
         <TextField
           onChange={(e) => setDetail(e.target.value)}
           className={classes.field}
@@ -59,7 +72,26 @@ function Create() {
           fullWidth
           required
           error={detailError}
+          helperText={detailError ? "Please fill this field" : ""}
         />
+
+        <FormControl className={classes.field}>
+          <FormLabel>Note Category</FormLabel>
+          <RadioGroup
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <FormControlLabel value="money" control={<Radio />} label="Money" />
+            <FormControlLabel value="todos" control={<Radio />} label="Todos" />
+            <FormControlLabel
+              value="reminders"
+              control={<Radio />}
+              label="Reminders"
+            />
+            <FormControlLabel value="work" control={<Radio />} label="Work" />
+          </RadioGroup>
+        </FormControl>
+
         <Button
           type="submit"
           variant="contained"
