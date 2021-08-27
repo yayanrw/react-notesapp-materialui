@@ -1,22 +1,28 @@
 {
-    "notes": [
-        {
-            "id": "1",
-            "title": "Buy macbook pro",
-            "details": "Just saving money",
-            "category": "money"
-        },
-        {
-            "id": "2",
-            "title": "Buy iphone 12",
-            "details": "Work hard",
-            "category": "money"
-        },
-        {
-            "id": "3",
-            "title": "React JS",
-            "details": "Dont forget to keep learning on React JS",
-            "category": "work"
-        }
-    ]
+  "notes": [
+    {
+      "id": "1",
+      "title": "Buy macbook pro",
+      "details": "Just saving money",
+      "category": "money"
+    },
+    {
+      "id": "2",
+      "title": "Buy iphone 12",
+      "details": "Work hard",
+      "category": "money"
+    },
+    {
+      "id": "3",
+      "title": "React JS",
+      "details": "Dont forget to keep learning on React JS",
+      "category": "work"
+    },
+    {
+      "title": "Honey's Birtday",
+      "detail": "Buy a birtday cake",
+      "category": "reminders",
+      "id": "i1Lk35p"
+    }
+  ]
 }
