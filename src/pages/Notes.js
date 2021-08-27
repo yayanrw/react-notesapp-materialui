@@ -1,21 +1,20 @@
-import { responsiveFontSizes } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import ApiUrl from "../helper/AppConfig";
 
 function Notes() {
   const [notes, setNotes] = useState([]);
-  const ApiUrl = "http://localhost:8000";
 
   useEffect(() => {
     fetch(`${ApiUrl}/notes`)
       .then((res) => res.json())
       .then((data) => setNotes(data))
-      .catch((e) => {});
+      .catch((e) => console.log(e));
   }, []);
 
   return (
     <div>
       {notes.map((note) => (
-        <p>{note.title}</p>
+        <p key={note.id}>{note.title}</p>
       ))}
     </div>
   );
