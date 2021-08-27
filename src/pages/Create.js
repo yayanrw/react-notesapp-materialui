@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import { KeyboardArrowRight } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
+import ApiUrl from "../helper/AppConfig";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   field: {
@@ -23,6 +25,7 @@ const useStyles = makeStyles({
 
 function Create() {
   const classes = useStyles();
+  const history = useHistory();
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
   const [titleError, setTitleError] = useState(false);
@@ -38,7 +41,11 @@ function Create() {
     detail === "" ? setDetailError(true) : setDetailError(false);
 
     if (title && detail) {
-      console.log(title, detail);
+      fetch(`${ApiUrl}/notes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, detail, category }),
+      }).then(() => history.push("/"));
     }
   };
 
